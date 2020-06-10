@@ -1,0 +1,29 @@
+PODS:
+  - Bugly (2.5.5)
+  - Flutter (1.0.0)
+  - report (1.0.0):
+    - Bugly
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - report (from `.symlinks/plugins/report/ios`)
+
+SPEC REPOS:
+  trunk:
+    - Bugly
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  report:
+    :path: ".symlinks/plugins/report/ios"
+
+SPEC CHECKSUMS:
+  Bugly: eded937bbb1f731cacf689c2d934ddbd9ab34f83
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  report: c622d62b4ac962cb08758d45e8aca8b28bf8814d
+
+PODFILE CHECKSUM: c34e2287a9ccaa606aeceab922830efb9a6ff69a
+
+COCOAPODS: 1.9.1
