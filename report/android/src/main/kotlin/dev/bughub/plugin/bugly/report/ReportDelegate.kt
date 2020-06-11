@@ -14,4 +14,12 @@ class ReportDelegate(var activity: Activity?) {
     fun postException(message: String, detail: String, map: Map<String, String>) {
         CrashReport.postException(8, "Flutter Exception", message, detail, map)
     }
+
+    fun setUserId(userId: String) {
+        CrashReport.setUserId(userId)
+    }
+
+    fun putUserData(context: Context, key: String, value: String) {
+        CrashReport.putUserData(context, key, value)
+    }
 }

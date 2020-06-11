@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:isolate';
 
 import 'package:flutter/foundation.dart';
@@ -9,8 +10,17 @@ class Report {
   static const MethodChannel _channel =
       const MethodChannel('plugin.bughub.dev/report');
 
-  static Future<void> init(String appId, bool debug) async {
+  static Future<void> init(String appId, bool debug) {
     return _channel.invokeMethod('init', {"appId": appId, "debug": debug});
+  }
+
+  static Future<void> setUserId(String userId) {
+    return _channel.invokeMethod('setUserId', {"userId": userId});
+  }
+
+  static Future<void> setUserData(List<Map<String, String>> userData) {
+    return _channel
+        .invokeMethod('setUserId', {"userData": jsonEncode(userData)});
   }
 
   static void catchException<T>(

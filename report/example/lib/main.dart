@@ -8,8 +8,6 @@ import 'package:report/report.dart';
 
 void main() {
   Report.catchException(() => runApp(MyApp()));
-
-//  runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -23,6 +21,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+    Report.setUserId("18600125034");
     Future((){
       HttpClient httpClient ;
       httpClient.close();

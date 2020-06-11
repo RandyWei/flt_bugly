@@ -119,6 +119,26 @@ public class ReportPlugin : FlutterPlugin, MethodCallHandler {
                 delegate?.postException(message, detail, map)
                 result.success(null)
             }
+            "setUserId" -> {
+                val userId = call.argument<String>("userId")
+                if (userId != null) {
+                    delegate?.setUserId(userId)
+                }
+                result.success(null)
+            }
+            "putUserData" -> {
+                val userDataList = call.argument<List<Map<String, String>>>("userData")
+                if (userDataList != null) {
+                    for (userData in userDataList) {
+                        val key = userData["key"]
+                        val value = userData["value"]
+                        if (this.application != null && !TextUtils.isEmpty(key) && !TextUtils.isEmpty(value)) {
+                            delegate?.putUserData(this.application!!, key!!, value!!)
+                        }
+                    }
+                }
+                result.success(null)
+            }
             else -> {
                 result.notImplemented()
             }
