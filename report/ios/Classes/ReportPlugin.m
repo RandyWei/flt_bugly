@@ -12,4 +12,12 @@
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
   [SwiftReportPlugin registerWithRegistrar:registrar];
 }
+
++(void)startWithAppId:(NSString*)appId :(Boolean)debugMode {
+    BuglyConfig* buglyConfig = [[BuglyConfig alloc]init];
+    buglyConfig.debugMode = debugMode;
+    [Bugly startWithAppId:appId config:buglyConfig];
+}
+
+
 @end

@@ -8,6 +8,7 @@ import Flutter
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
     GeneratedPluginRegistrant.register(with: self)
+    ReportPlugin.start(withAppId: "b4ac5c861e", true)
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 }

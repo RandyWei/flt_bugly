@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-import 'package:flutter/services.dart';
 import 'package:report/report.dart';
 
 void main() {
@@ -23,7 +22,7 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     Report.setUserId("18600125034");
     Future((){
-      HttpClient httpClient ;
+      HttpClient httpClient;
       httpClient.close();
     });
   }
