@@ -97,21 +97,31 @@ public class ReportPlugin : FlutterPlugin, MethodCallHandler {
     }
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
-        if (call.method == "init") {
-            if (this.application == null) {
-                result.error("404", "application is null", null)
-            } else {
-                val appId = call.argument<String>("appId")
-                val debug = call.argument<Boolean>("debug") ?: false
-                if (TextUtils.isEmpty(appId)) {
-                    result.error("404", "appId is null", null)
+        when (call.method) {
+            "init" -> {
+                if (this.application == null) {
+                    result.error("404", "application is null", null)
                 } else {
-                    delegate?.initBugly(this.application!!, "", debug)
-                    result.success(null)
+                    val appId = call.argument<String>("appId")
+                    val debug = call.argument<Boolean>("debug") ?: false
+                    if (TextUtils.isEmpty(appId)) {
+                        result.error("404", "appId is null", null)
+                    } else {
+                        delegate?.initBugly(this.application!!, "", debug)
+                        result.success(null)
+                    }
                 }
             }
-        } else {
-            result.notImplemented()
+            "postException" -> {
+                val message = call.argument<String>("message") ?: ""
+                val detail = call.argument<String>("detail") ?: ""
+                val map = call.argument<Map<String, String>>("data") ?: HashMap()
+                delegate?.postException(message, detail, map)
+                result.success(null)
+            }
+            else -> {
+                result.notImplemented()
+            }
         }
     }
 

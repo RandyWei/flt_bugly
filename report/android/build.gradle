@@ -1,6 +1,13 @@
 group 'dev.bughub.plugin.bugly.report'
 version '1.0-SNAPSHOT'
 
+apply plugin: 'bugly'
+
+bugly {
+    appId = 'c27bef3514' // 注册时分配的App ID
+    appKey = 'b5bc69f1-c2a5-4904-a004-7768d455e2a9' // 注册时分配的App Key
+}
+
 buildscript {
     ext.kotlin_version = '1.3.72'
     repositories {

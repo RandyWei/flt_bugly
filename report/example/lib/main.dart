@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'dart:async';
 
@@ -5,8 +7,9 @@ import 'package:flutter/services.dart';
 import 'package:report/report.dart';
 
 void main() {
-  Report.catchException(() => runApp(MyApp()),
-      appId: "c27bef3514", debug: true);
+  Report.catchException(() => runApp(MyApp()));
+
+//  runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -20,6 +23,10 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+    Future((){
+      HttpClient httpClient ;
+      httpClient.close();
+    });
   }
 
   @override
@@ -30,7 +37,9 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+          child: Row(children: <Widget>[
+            Text('Plugin example appPlugin example appPlugin example appPlugin example appPlugin example appPlugin example appPlugin example appPlugin example appPlugin example appPlugin example appPlugin example appPlugin example appRunning on: $_platformVersion\n')
+          ],),
         ),
       ),
     );
