@@ -29,7 +29,7 @@ class Report {
     String filterRegExp, //异常上报过滤正则，针对message
   }) {
     bool _isDebug = false;
-//    assert(_isDebug = true);
+    assert(_isDebug = true);
     // This captures errors reported by the Flutter framework.
     FlutterError.onError = (details) {
       _filterAndUploadException(_isDebug, handler, filterRegExp, details);
