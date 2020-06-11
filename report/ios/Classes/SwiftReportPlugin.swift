@@ -20,8 +20,18 @@ public class SwiftReportPlugin: NSObject, FlutterPlugin {
         
         let callStack = detail?.components(separatedBy: "") ?? []
         Bugly.reportException(withCategory: 5, name: "Flutter Exception", reason: reason!, callStack: callStack, extraInfo: data, terminateApp: false)
+        result(nil)
+    } else if call.method == "setUserId" {
+        let userId = arguments["userId"] as? String ?? ""
+        Bugly.setUserIdentifier(userId)
+        result(nil)
+    } else if call.method == "putUserData" {
+        let userDataList = arguments["userData"] as? Array<[String:String]> ?? []
+        for userData in userDataList {
+            Bugly.setUserValue(userData["key"] ?? "", forKey: userData["value"] ?? "")
+        }
+        result(nil)
     }
-    result("iOS " + UIDevice.current.systemVersion)
   }
     
 }
